@@ -96,6 +96,7 @@ def process_line(line, line_number):
         datos_contacto[17].strip() if len(datos_contacto) > 17 else "", # Exp_Saldo_TEXTO
         datos_contacto[18].strip() if len(datos_contacto) > 18 else "", # SumaSaldoCapitalAgrupadas
         datos_contacto[22].strip() if len(datos_contacto) > 22 else ""  # CIReferencia
+ 
     ]
 
     # Retornar los campos procesados solo si al menos el 50% de los campos contienen datos
