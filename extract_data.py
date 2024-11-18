@@ -6,7 +6,7 @@ from datetime import datetime
 column_names = [
     "Bar_Code", "Tipo_Carta", "Codigo",
     "Interviniente_Nombre", "Direccion_Via", "Direccion_Localidad", "Telefono", "HorarioAgencia", "MailCabeceraCapital", 
-    "Direccion_DenomProvincia", "Direccion_CodigoPostal", "codVerif", "dia", "mes", "ano","Interviniente_Nombre2", "Propietario", "cccPropietario", "FechaMasVeintiunDias", "Expediente", "Deuda",
+    "Direccion_DenomProvincia", "Direccion_CodigoPostal", "codVerif", "agencia", "dia", "mes", "ano","Interviniente_Nombre2", "Propietario", "cccPropietario", "FechaMasVeintiunDias", "Expediente", "Deuda",
     "TextoCesion", "Saldo", "notariocedente", "FechaCesionCedente", "ProtocoloCedente", "Exp_Saldo_TEXTO", "SumaSaldoCapitalAgrupadas", "CIReferencia"
 ]
 
@@ -38,6 +38,7 @@ def process_line(line, line_number):
     direccion_denom_provincia = datos_contacto[0][:2] if len(datos_contacto) > 0 and len(datos_contacto[0]) >= 2 else ""
     direccion_codigo_postal = datos_contacto[0][2:7] if len(datos_contacto) > 0 and len(datos_contacto[0]) >= 7 else ""
     cod_verif = datos_contacto[0][7:37] if len(datos_contacto) > 0 and len(datos_contacto[0]) > 37 else ""
+    agencia = datos_contacto[0][37:] if len(datos_contacto) > 0 and len(datos_contacto[0]) > 37 else ""
 
      # Transformar el Bar_Code al formato correcto
     bar_code_original = datos_basicos[0].strip() if len(datos_basicos) > 0 else ""
@@ -79,6 +80,7 @@ def process_line(line, line_number):
         direccion_denom_provincia,
         direccion_codigo_postal,
         cod_verif,
+        agencia,
         datos_contacto[4].strip() if len(datos_contacto) > 4 else "",  # dia 
         datos_contacto[5].strip() if len(datos_contacto) > 5 else "",  # mes 
         datos_contacto[6].strip() if len(datos_contacto) > 6 else "",  # ano 
@@ -129,5 +131,5 @@ def convert_file(input_filename, output_filename):
 # Convertir archivo
 if __name__ == "__main__":
     input_filename = "/Users/paulalaorga/Development/cartas/Raw Data/input.txt"
-    output_filename = "/Users/paulalaorga/Development/cartas/Raw Data/output.csv"
+    output_filename = "/Users/paulalaorga/Development/cartas/Parsed/extract_data_output.csv"
     convert_file(input_filename, output_filename)
