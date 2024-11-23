@@ -6,7 +6,7 @@ from datetime import datetime
 column_names = [
     "Bar_Code", "Tipo_Carta", "Codigo",
     "Interviniente_Nombre", "Direccion_Via", "Direccion_Localidad", "Telefono", "HorarioAgencia", "MailCabeceraCapital", 
-    "Direccion_DenomProvincia", "Direccion_CodigoPostal", "codVerif", "agencia", "dia", "mes", "ano","Interviniente_Nombre2", "Propietario", "cccPropietario", "FechaMasVeintiunDias", "Expediente", "Deuda",
+    "Direccion_DenomProvincia", "Direccion_CodigoPostal", "codVerif", "Agencia", "dia", "mes", "ano", "Propietario", "cccPropietario", "FechaMasVeintiunDias", "Expediente", "Deuda",
     "TextoCesion", "Saldo", "notariocedente", "FechaCesionCedente", "ProtocoloCedente", "Exp_Saldo_TEXTO", "SumaSaldoCapitalAgrupadas", "CIReferencia"
 ]
 
@@ -84,7 +84,6 @@ def process_line(line, line_number):
         datos_contacto[4].strip() if len(datos_contacto) > 4 else "",  # dia 
         datos_contacto[5].strip() if len(datos_contacto) > 5 else "",  # mes 
         datos_contacto[6].strip() if len(datos_contacto) > 6 else "",  # ano 
-        datos_contacto[7].strip() if len(datos_contacto) > 7 else "",  # Interviniente2 
         datos_contacto[8].strip() if len(datos_contacto) > 8 else "",  # Propietario
         cuenta_bancaria,  # cccPropietario
         fecha_vencimiento,  # FechaMasVeintiunDias
